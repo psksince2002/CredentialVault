@@ -1,0 +1,50 @@
+
+
+<div class="bg-dark text-color p-2 h-100">
+  <h1 class="text-center heading ">CredVault</h1>
+  <p class="text-center">An application to store credentials of various platforms</p>
+  <h2 class="text-center mt-5">Register</h2>
+  <div class="row  mt-3">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <form action="" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="form-floating mb-3 w-80">
+          <input type="text" class="form-control " id="name" placeholder="Enter your username" formControlName="username">
+          <label for="name">Username</label>
+        </div>
+        <div class="alert alert-danger" *ngIf="username?.invalid && (username?.dirty || username?.touched)">
+              <div *ngIf="username?.errors?.required">
+                    Username is required!
+              </div>
+        </div>
+        <div class="form-floating mb-3 w-80">
+          <input type="email"  id="mail" class="form-control" placeholder="Enter your email" formControlName="email">
+          <label for="mail">Email</label>
+        </div>
+        <div class="alert alert-danger" *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+          <div *ngIf="email?.errors?.required">
+                Email is required!
+          </div>
+          <div *ngIf="email?.errors?.pattern">
+                Not a Valid Email!
+          </div>
+        </div>
+        <div class="form-floating mb-3 w-80">
+          <input type="password"  id="password" class="form-control" placeholder="Enter your password" formControlName="password">
+          <label for="password">Password</label>
+        </div>
+        <div class="alert alert-danger" *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+          <div *ngIf="password?.errors?.required">
+                Password is required!
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button class="btn btn-outline-warning text-center" type="submit" [disabled]="userForm?.invalid">Submit</button>
+        </div>
+      </form>
+      <p class="text-center mt-3">Already a user <a [routerLink]="['/login']" class="text-decoration-none" >Login</a></p>
+    </div>
+    <div class="col-4"></div>
+  </div>
+  </div>
